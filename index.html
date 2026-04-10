@@ -1,0 +1,634 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPro — Learn Without Limits</title>
+  <meta name="description" content="Master in-demand skills with expert-led online courses in Digital Marketing, UI/UX, SEO, Video Editing & Graphic Design." />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4F46E5', secondary: '#06B6D4', accent: '#F59E0B',
+            bg: '#0F172A', surface: '#111827', surface2: '#1F2937'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Hero specific */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 20% 50%, rgba(79,70,229,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.1) 0%, transparent 50%),
+                  #0F172A;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(79,70,229,0.12); border: 1px solid rgba(79,70,229,0.3);
+      color: #818CF8; padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900; line-height: 1.08; letter-spacing: -0.03em;
+    }
+    .hero-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .hero-card-float {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      position: absolute; white-space: nowrap;
+    }
+    /* Testimonial slider */
+    .testimonial-slide { display: none; }
+    .testimonial-slide.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .slider-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s;
+    }
+    .slider-dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
+    /* Process steps */
+    .process-step { position: relative; }
+    .process-step:not(:last-child)::after {
+      content: ''; position: absolute; top: 28px; left: calc(100% + 0px);
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, rgba(79,70,229,0.5), transparent);
+    }
+    /* Stars */
+    .stars { color: #F59E0B; letter-spacing: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="image/logo.png" alt="EduPro" onerror="this.style.display='none'" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="courses.html" class="btn-secondary-custom">Log In</a>
+        <a href="courses.html" class="btn-primary-custom">Get Started <i class="fas fa-arrow-right fa-xs"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section">
+  <!-- Glow blobs -->
+  <div class="hero-glow" style="width:600px;height:600px;background:#4F46E5;top:-100px;left:-200px;"></div>
+  <div class="hero-glow" style="width:400px;height:400px;background:#06B6D4;bottom:-100px;right:-100px;"></div>
+
+  <div class="container position-relative" style="padding-top:5rem;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="hero-badge">
+          <i class="fas fa-bolt fa-xs"></i> #1 Online Learning Platform
+        </div>
+        <h1 class="hero-title text-white mb-4">
+          Learn Skills That<br />
+          <span class="gradient-text">Actually Pay Off</span>
+        </h1>
+        <p class="text-gray-400 mb-5 fs-5 lh-lg" style="color:#9CA3AF;max-width:480px;">
+          Master in-demand digital skills with expert-led courses. Join 50,000+ students building real careers.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mb-5">
+          <a href="courses.html" class="btn-accent">
+            <i class="fas fa-play-circle"></i> Explore Courses
+          </a>
+          <a href="about.html" class="btn-secondary-custom">
+            <i class="fas fa-info-circle"></i> Learn More
+          </a>
+        </div>
+        <!-- Trust badges -->
+        <div class="d-flex flex-wrap gap-4 align-items-center">
+          <div class="d-flex align-items-center gap-2">
+            <div class="d-flex">
+              <img src="https://i.pravatar.cc/32?img=1" class="rounded-circle border border-2" style="border-color:#4F46E5!important;margin-right:-8px;" width="32" height="32" alt="student" />
+              <img src="https://i.pravatar.cc/32?img=2" class="rounded-circle border border-2" style="border-color:#4F46E5!important;margin-right:-8px;" width="32" height="32" alt="student" />
+              <img src="https://i.pravatar.cc/32?img=3" class="rounded-circle border border-2" style="border-color:#4F46E5!important;" width="32" height="32" alt="student" />
+            </div>
+            <div>
+              <div class="stars" style="font-size:0.75rem;">★★★★★</div>
+              <div style="font-size:0.75rem;color:#9CA3AF;">50K+ students</div>
+            </div>
+          </div>
+          <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+          <div style="font-size:0.82rem;color:#9CA3AF;">
+            <i class="fas fa-shield-alt" style="color:#4F46E5;"></i> 30-day money back guarantee
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-none d-lg-block position-relative" data-aos="fade-left">
+        <div class="hero-float" style="position:relative;height:480px;">
+          <!-- Main card -->
+          <div class="glass rounded-3xl p-4" style="border-radius:24px;padding:1.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <div style="width:48px;height:48px;background:linear-gradient(135deg,#4F46E5,#06B6D4);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                <i class="fas fa-graduation-cap text-white"></i>
+              </div>
+              <div>
+                <div class="text-white fw-600">UI/UX Design Masterclass</div>
+                <div style="color:#9CA3AF;font-size:0.82rem;">12 weeks · Beginner to Pro</div>
+              </div>
+            </div>
+            <!-- Progress -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1" style="font-size:0.82rem;">
+                <span style="color:#9CA3AF;">Course Progress</span>
+                <span style="color:#818CF8;">68%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width:68%;"></div></div>
+            </div>
+            <!-- Modules -->
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-lg" style="background:rgba(79,70,229,0.1);border-radius:10px;">
+                <i class="fas fa-check-circle" style="color:#10B981;"></i>
+                <span style="font-size:0.85rem;color:#D1D5DB;">Design Fundamentals</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 p-2 rounded-lg" style="background:rgba(79,70,229,0.1);border-radius:10px;">
+                <i class="fas fa-check-circle" style="color:#10B981;"></i>
+                <span style="font-size:0.85rem;color:#D1D5DB;">Figma Mastery</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 p-2 rounded-lg" style="background:rgba(6,182,212,0.1);border-radius:10px;">
+                <i class="fas fa-play-circle" style="color:#06B6D4;"></i>
+                <span style="font-size:0.85rem;color:#D1D5DB;">Prototyping & Testing</span>
+              </div>
+            </div>
+          </div>
+          <!-- Floating cards -->
+          <div class="hero-card-float" style="top:-20px;right:-20px;animation:float 4s ease-in-out infinite;">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#F59E0B,#FBBF24);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+              <i class="fas fa-trophy" style="color:#0F172A;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:#fff;">Certificate Earned</div>
+              <div style="font-size:0.72rem;color:#9CA3AF;">UI/UX Design Pro</div>
+            </div>
+          </div>
+          <div class="hero-card-float" style="bottom:20px;left:-30px;animation:float 5s ease-in-out infinite 1s;">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#10B981,#059669);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+              <i class="fas fa-users" style="color:#fff;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:#fff;">+2,400 Students</div>
+              <div style="font-size:0.72rem;color:#9CA3AF;">Enrolled this week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="py-5" style="background:var(--surface);">
+  <div class="divider"></div>
+  <div class="container py-4">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="stat-card">
+          <div class="stat-number counter" data-target="50000" data-suffix="+">0</div>
+          <div style="color:#9CA3AF;font-size:0.9rem;margin-top:0.25rem;">Active Students</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-card">
+          <div class="stat-number counter" data-target="120" data-suffix="+">0</div>
+          <div style="color:#9CA3AF;font-size:0.9rem;margin-top:0.25rem;">Expert Courses</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-card">
+          <div class="stat-number counter" data-target="98" data-suffix="%">0</div>
+          <div style="color:#9CA3AF;font-size:0.9rem;margin-top:0.25rem;">Success Rate</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-card">
+          <div class="stat-number counter" data-target="40" data-suffix="+">0</div>
+          <div style="color:#9CA3AF;font-size:0.9rem;margin-top:0.25rem;">Industry Experts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</section>
+
+<!-- ===== COURSES PREVIEW ===== -->
+<section class="py-5 py-lg-6" style="padding-top:5rem;padding-bottom:5rem;">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-fire fa-xs"></i> Popular Courses</div>
+      <h2 class="section-title text-white mt-2">Courses Built for <span class="gradient-text">Real Results</span></h2>
+      <p style="color:#9CA3AF;max-width:520px;margin:1rem auto 0;">Hand-picked by industry experts. Designed to get you job-ready fast.</p>
+    </div>
+    <div class="row g-4">
+      <!-- Course Card 1 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <a href="course-detail.html" class="course-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Digital Marketing" />
+            <span class="course-badge badge-marketing">Marketing</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-white fw-700 mb-2" style="font-size:1.05rem;">Digital Marketing Masterclass</h3>
+            <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem;">Master Facebook Ads, Google Ads, email marketing & growth hacking.</p>
+            <div class="d-flex gap-3 mb-3" style="font-size:0.8rem;color:#9CA3AF;">
+              <span><i class="fas fa-clock me-1" style="color:#4F46E5;"></i>24 Hours</span>
+              <span><i class="fas fa-signal me-1" style="color:#06B6D4;"></i>Beginner</span>
+              <span><i class="fas fa-users me-1" style="color:#F59E0B;"></i>8.2K</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div><span style="color:#F59E0B;font-size:1.2rem;font-weight:800;">&#8377;XX</span> <span style="color:#9CA3AF;text-decoration:line-through;font-size:0.85rem;">&#8377;XX</span></div>
+              <span class="btn-primary-custom" style="padding:0.4rem 1rem;font-size:0.82rem;">Enroll Now</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Course Card 2 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="course-detail.html" class="course-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80" alt="SEO Expert" />
+            <span class="course-badge badge-marketing">SEO</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-white fw-700 mb-2" style="font-size:1.05rem;">SEO Expert Certification</h3>
+            <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem;">Rank #1 on Google. Technical SEO, link building & content strategy.</p>
+            <div class="d-flex gap-3 mb-3" style="font-size:0.8rem;color:#9CA3AF;">
+              <span><i class="fas fa-clock me-1" style="color:#4F46E5;"></i>18 Hours</span>
+              <span><i class="fas fa-signal me-1" style="color:#06B6D4;"></i>Intermediate</span>
+              <span><i class="fas fa-users me-1" style="color:#F59E0B;"></i>5.1K</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div><span style="color:#F59E0B;font-size:1.2rem;font-weight:800;">&#8377;XX</span> <span style="color:#9CA3AF;text-decoration:line-through;font-size:0.85rem;">&#8377;XX</span></div>
+              <span class="btn-primary-custom" style="padding:0.4rem 1rem;font-size:0.82rem;">Enroll Now</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Course Card 3 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="course-detail.html" class="course-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="UI/UX Design" />
+            <span class="course-badge badge-design">Design</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-white fw-700 mb-2" style="font-size:1.05rem;">UI/UX Design Masterclass</h3>
+            <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem;">Figma, user research, prototyping & design systems from scratch.</p>
+            <div class="d-flex gap-3 mb-3" style="font-size:0.8rem;color:#9CA3AF;">
+              <span><i class="fas fa-clock me-1" style="color:#4F46E5;"></i>32 Hours</span>
+              <span><i class="fas fa-signal me-1" style="color:#06B6D4;"></i>Beginner</span>
+              <span><i class="fas fa-users me-1" style="color:#F59E0B;"></i>12K</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div><span style="color:#F59E0B;font-size:1.2rem;font-weight:800;">&#8377;XX</span> <span style="color:#9CA3AF;text-decoration:line-through;font-size:0.85rem;">&#8377;XX</span></div>
+              <span class="btn-primary-custom" style="padding:0.4rem 1rem;font-size:0.82rem;">Enroll Now</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Course Card 4 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <a href="course-detail.html" class="course-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80" alt="Video Editing" />
+            <span class="course-badge badge-editing">Editing</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-white fw-700 mb-2" style="font-size:1.05rem;">Video Editing Pro</h3>
+            <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem;">Premiere Pro, After Effects, color grading & cinematic storytelling.</p>
+            <div class="d-flex gap-3 mb-3" style="font-size:0.8rem;color:#9CA3AF;">
+              <span><i class="fas fa-clock me-1" style="color:#4F46E5;"></i>28 Hours</span>
+              <span><i class="fas fa-signal me-1" style="color:#06B6D4;"></i>All Levels</span>
+              <span><i class="fas fa-users me-1" style="color:#F59E0B;"></i>6.8K</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div><span style="color:#F59E0B;font-size:1.2rem;font-weight:800;">&#8377;XX</span> <span style="color:#9CA3AF;text-decoration:line-through;font-size:0.85rem;">&#8377;XX</span></div>
+              <span class="btn-primary-custom" style="padding:0.4rem 1rem;font-size:0.82rem;">Enroll Now</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Course Card 5 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="course-detail.html" class="course-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80" alt="Graphic Design" />
+            <span class="course-badge badge-design">Design</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-white fw-700 mb-2" style="font-size:1.05rem;">Graphic Design Bootcamp</h3>
+            <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem;">Photoshop, Illustrator, brand identity & print/digital design.</p>
+            <div class="d-flex gap-3 mb-3" style="font-size:0.8rem;color:#9CA3AF;">
+              <span><i class="fas fa-clock me-1" style="color:#4F46E5;"></i>36 Hours</span>
+              <span><i class="fas fa-signal me-1" style="color:#06B6D4;"></i>Beginner</span>
+              <span><i class="fas fa-users me-1" style="color:#F59E0B;"></i>9.4K</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div><span style="color:#F59E0B;font-size:1.2rem;font-weight:800;">&#8377;XX</span> <span style="color:#9CA3AF;text-decoration:line-through;font-size:0.85rem;">&#8377;XX</span></div>
+              <span class="btn-primary-custom" style="padding:0.4rem 1rem;font-size:0.82rem;">Enroll Now</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- View All -->
+      <div class="col-md-6 col-lg-4 d-flex align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <a href="courses.html" class="text-center p-4" style="text-decoration:none;">
+          <div style="width:72px;height:72px;background:rgba(79,70,229,0.15);border:2px dashed rgba(79,70,229,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+            <i class="fas fa-arrow-right" style="color:#4F46E5;font-size:1.2rem;"></i>
+          </div>
+          <div class="text-white fw-600 mb-1">View All Courses</div>
+          <div style="color:#9CA3AF;font-size:0.85rem;">120+ courses available</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="py-5 py-lg-6" style="background:var(--surface);padding-top:5rem;padding-bottom:5rem;">
+  <div class="divider"></div>
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-star fa-xs"></i> Why EduPro</div>
+        <h2 class="section-title text-white mt-2 mb-4">Learning That <span class="gradient-text">Actually Works</span></h2>
+        <p style="color:#9CA3AF;line-height:1.8;margin-bottom:2rem;">We don't just teach theory. Every course is built around real-world projects, industry mentors, and outcomes that matter to employers.</p>
+        <a href="about.html" class="btn-primary-custom">Our Story <i class="fas fa-arrow-right fa-xs"></i></a>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-3">
+          <div class="col-sm-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="feature-card">
+              <div class="feature-icon" style="background:rgba(79,70,229,0.15);">🎯</div>
+              <h4 class="text-white fw-700 mb-2" style="font-size:1rem;">Project-Based Learning</h4>
+              <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Build a real portfolio while you learn. Every module ends with a hands-on project.</p>
+            </div>
+          </div>
+          <div class="col-sm-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon" style="background:rgba(6,182,212,0.15);">👨‍🏫</div>
+              <h4 class="text-white fw-700 mb-2" style="font-size:1rem;">Industry Mentors</h4>
+              <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Learn from professionals actively working at top companies like Google, Meta & Adobe.</p>
+            </div>
+          </div>
+          <div class="col-sm-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon" style="background:rgba(245,158,11,0.15);">🏆</div>
+              <h4 class="text-white fw-700 mb-2" style="font-size:1rem;">Verified Certificates</h4>
+              <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Earn certificates recognized by 500+ hiring companies worldwide.</p>
+            </div>
+          </div>
+          <div class="col-sm-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon" style="background:rgba(16,185,129,0.15);">♾️</div>
+              <h4 class="text-white fw-700 mb-2" style="font-size:1rem;">Lifetime Access</h4>
+              <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Pay once, learn forever. All future updates included at no extra cost.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</section>
+
+<!-- ===== LEARNING PROCESS ===== -->
+<section class="py-5 py-lg-6" style="padding-top:5rem;padding-bottom:5rem;">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-route fa-xs"></i> How It Works</div>
+      <h2 class="section-title text-white mt-2">Your Path to <span class="gradient-text">Success</span></h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="text-center p-4">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#4F46E5,#6366F1);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;">🔍</div>
+          <div style="color:#4F46E5;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Step 01</div>
+          <h4 class="text-white fw-700 mb-2">Choose a Course</h4>
+          <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Browse 120+ courses and find the perfect match for your goals.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-center p-4">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#06B6D4,#0891B2);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;">📚</div>
+          <div style="color:#06B6D4;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Step 02</div>
+          <h4 class="text-white fw-700 mb-2">Learn at Your Pace</h4>
+          <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Watch HD videos, complete projects, and get mentor feedback.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-center p-4">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#F59E0B,#D97706);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;">🛠️</div>
+          <div style="color:#F59E0B;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Step 03</div>
+          <h4 class="text-white fw-700 mb-2">Build Real Projects</h4>
+          <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Apply skills immediately with guided real-world assignments.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-center p-4">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#10B981,#059669);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;">🎓</div>
+          <div style="color:#10B981;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Step 04</div>
+          <h4 class="text-white fw-700 mb-2">Get Certified</h4>
+          <p style="color:#9CA3AF;font-size:0.875rem;line-height:1.7;">Earn your certificate and land your dream job or client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="py-5 py-lg-6" style="background:var(--surface);padding-top:5rem;padding-bottom:5rem;">
+  <div class="divider"></div>
+  <div class="container py-5">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-heart fa-xs"></i> Student Stories</div>
+      <h2 class="section-title text-white mt-2">Real Results, <span class="gradient-text">Real People</span></h2>
+    </div>
+    <div class="row justify-content-center" data-aos="fade-up">
+      <div class="col-lg-8">
+        <div style="position:relative;">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide testimonial-card">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:#D1D5DB;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">"EduPro's UI/UX course completely changed my career. Within 3 months of finishing, I landed a &#8377;XX design role at a startup. The project-based approach made all the difference."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/56?img=5" class="rounded-circle" width="56" height="56" alt="Sarah M." />
+              <div>
+                <div class="text-white fw-600">Sarah Mitchell</div>
+                <div style="color:#9CA3AF;font-size:0.85rem;">UI/UX Designer @ TechFlow</div>
+              </div>
+              <div class="ms-auto" style="background:rgba(79,70,229,0.15);border-radius:10px;padding:0.5rem 0.75rem;font-size:0.8rem;color:#818CF8;">UI/UX Design</div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="testimonial-slide testimonial-card">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:#D1D5DB;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">"The Digital Marketing course gave me everything I needed to grow my agency from 0 to &#8377;XX/month. The Facebook Ads module alone was worth 10x the price."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/56?img=12" class="rounded-circle" width="56" height="56" alt="James K." />
+              <div>
+                <div class="text-white fw-600">James Kowalski</div>
+                <div style="color:#9CA3AF;font-size:0.85rem;">Founder @ GrowthLab Agency</div>
+              </div>
+              <div class="ms-auto" style="background:rgba(6,182,212,0.15);border-radius:10px;padding:0.5rem 0.75rem;font-size:0.8rem;color:#06B6D4;">Digital Marketing</div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="testimonial-slide testimonial-card">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:#D1D5DB;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">"I went from zero video editing knowledge to editing full YouTube videos professionally. The Premiere Pro section is incredibly detailed. Best investment I've made."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/56?img=9" class="rounded-circle" width="56" height="56" alt="Priya S." />
+              <div>
+                <div class="text-white fw-600">Priya Sharma</div>
+                <div style="color:#9CA3AF;font-size:0.85rem;">Content Creator, 200K subscribers</div>
+              </div>
+              <div class="ms-auto" style="background:rgba(245,158,11,0.15);border-radius:10px;padding:0.5rem 0.75rem;font-size:0.8rem;color:#F59E0B;">Video Editing</div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <div class="d-flex align-items-center justify-content-between mt-4">
+            <div class="d-flex gap-2">
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="slider-prev" style="width:44px;height:44px;border-radius:50%;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);color:#fff;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#4F46E5'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                <i class="fas fa-arrow-left fa-sm"></i>
+              </button>
+              <button class="slider-next" style="width:44px;height:44px;border-radius:50%;background:var(--primary);border:none;color:#fff;cursor:pointer;transition:all 0.2s;">
+                <i class="fas fa-arrow-right fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="py-5 py-lg-6" style="padding-top:5rem;padding-bottom:5rem;">
+  <div class="container">
+    <div data-aos="zoom-in" style="background:linear-gradient(135deg,rgba(79,70,229,0.3),rgba(6,182,212,0.2));border:1px solid rgba(79,70,229,0.3);border-radius:24px;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden;">
+      <div class="hero-glow" style="width:400px;height:400px;background:#4F46E5;top:-200px;left:50%;transform:translateX(-50%);opacity:0.1;"></div>
+      <div class="section-tag mx-auto mb-3"><i class="fas fa-rocket fa-xs"></i> Limited Time Offer</div>
+      <h2 class="section-title text-white mb-3">Start Learning <span class="gradient-text">Today</span></h2>
+      <p style="color:#9CA3AF;max-width:480px;margin:0 auto 2rem;font-size:1.05rem;">Get full access to all 120+ courses for one low price. No hidden fees.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="courses.html" class="btn-accent" style="font-size:1rem;padding:0.85rem 2.5rem;">
+          <i class="fas fa-bolt"></i> Get Full Access — &#8377;XX
+        </a>
+        <a href="courses.html" class="btn-secondary-custom">Browse Free Courses</a>
+      </div>
+      <p style="color:#9CA3AF;font-size:0.8rem;margin-top:1.5rem;"><i class="fas fa-lock me-1"></i> 30-day money-back guarantee · No credit card required to browse</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer pt-5 pb-4">
+  <div class="container">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="footer-logo text-decoration-none">
+          <img src="image/logo.png" alt="EduPro" onerror="this.style.display='none'" />
+        </a>
+        <p style="color:#9CA3AF;font-size:0.9rem;line-height:1.8;max-width:280px;">Empowering 50,000+ learners worldwide with skills that matter in the modern economy.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" style="width:36px;height:36px;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#4F46E5';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='#9CA3AF'"><i class="fab fa-twitter fa-sm"></i></a>
+          <a href="#" style="width:36px;height:36px;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#4F46E5';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='#9CA3AF'"><i class="fab fa-linkedin fa-sm"></i></a>
+          <a href="#" style="width:36px;height:36px;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#4F46E5';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='#9CA3AF'"><i class="fab fa-instagram fa-sm"></i></a>
+          <a href="#" style="width:36px;height:36px;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#4F46E5';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='#9CA3AF'"><i class="fab fa-youtube fa-sm"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white fw-700 mb-3" style="font-size:0.9rem;letter-spacing:0.04em;">Courses</h6>
+        <a href="courses.html" class="footer-link">Digital Marketing</a>
+        <a href="courses.html" class="footer-link">SEO Expert</a>
+        <a href="courses.html" class="footer-link">UI/UX Design</a>
+        <a href="courses.html" class="footer-link">Video Editing</a>
+        <a href="courses.html" class="footer-link">Graphic Design</a>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white fw-700 mb-3" style="font-size:0.9rem;letter-spacing:0.04em;">Company</h6>
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Blog</a>
+        <a href="#" class="footer-link">Press</a>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h6 class="text-white fw-700 mb-3" style="font-size:0.9rem;letter-spacing:0.04em;">Stay Updated</h6>
+        <p style="color:#9CA3AF;font-size:0.875rem;margin-bottom:1rem;">Get new course alerts and exclusive discounts.</p>
+        <div class="d-flex gap-2">
+          <input type="email" placeholder="Enter your email" class="form-control-custom" style="border-radius:50px;flex:1;" />
+          <button class="btn-primary-custom" style="border-radius:50px;white-space:nowrap;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center pt-4 gap-3">
+      <p style="color:#9CA3AF;font-size:0.85rem;margin:0;">© 2026 EduPro. All rights reserved.</p>
+      <div class="d-flex gap-4">
+        <a href="#" style="color:#9CA3AF;font-size:0.85rem;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Privacy Policy</a>
+        <a href="#" style="color:#9CA3AF;font-size:0.85rem;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true, offset: 80, duration: 700 });</script>
+<script src="js/main.js"></script>
+</body>
+</html>
